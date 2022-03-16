@@ -1,7 +1,7 @@
 {
   "title": "Integration Layer Adapter",
   "description": "Integration Layer Adapter for OIH",
-  "docsUrl": "https://github.com/WiceDe/integration-layer-adapter",
+  "docsUrl": "https://github.com/blendededge/ila-component-oih",
   "credentials": {
     "fields": {
       "ilaId": {
