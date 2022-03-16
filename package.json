@@ -25,6 +25,8 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^17.0.21",
     "chai": "^4.1.2",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "13.1.0",
