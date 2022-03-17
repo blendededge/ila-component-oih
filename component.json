@@ -26,14 +26,14 @@
       "title": "Fetch valid chunks",
       "description": "Get only valid chunks from ILS",
       "type": "polling",
-      "main": "./lib/triggers/getChunksPolling.js",
+      "main": "./dist/triggers/getChunksPolling.js",
       "metadata": {}
     }
   },
   "actions": {
     "upsertChunk": {
       "title": "Create a chunk in ILS",
-      "main": "./lib/actions/upsertChunk.js",
+      "main": "./dist/actions/upsertChunk.js",
       "metadata": {}
     }
   }

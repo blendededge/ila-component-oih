@@ -2,6 +2,7 @@
   "name": "ila-component-oih",
   "version": "0.0.1",
   "description": "Integration Layer Adapter for OIH",
+  "main": "node_modules/@openintegrationhub/ferryman/runGlobal.js",
   "scripts": {
     "compile": "tsc",
     "lint-fix": "eslint api tests --ext .js --ext .json --fix",
@@ -22,11 +23,13 @@
   "dependencies": {
     "@openintegrationhub/ferryman": "^2.1.0",
     "axios": "^0.26.1",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/mocha": "^9.1.0",
     "@types/node": "^17.0.21",
+    "@types/uuid": "^8.3.4",
     "chai": "^4.1.2",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "13.1.0",
