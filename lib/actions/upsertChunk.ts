@@ -73,6 +73,7 @@ async function upsertChunk(msg: Message, cfg: UpsertConfig, logger: ComponentLog
     throw error;
   }
 }
+exports.upsertChunk = upsertChunk;
 
 function validateConfig(cfg: UpsertConfig) {
   const requiredKeys = ['ilaId', 'cid', 'def', 'token'];
