@@ -58,3 +58,5 @@ async function getChunks(cfg: PollConfig, snapshot: any, logger: ComponentLogger
     logger.error(`ERROR getting chunks from ILS: ${JSON.stringify(error, null, 2)}`);
   }
 }
+
+exports.getChunks = getChunks;

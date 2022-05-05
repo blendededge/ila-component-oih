@@ -5,13 +5,20 @@
 /* eslint no-unused-vars: "off" */
 
 const { expect } = require('chai');
-const { upsertChunk } = require('./../lib/actions/upsertChunk.js');
-const { getChunks } = require('./../lib/triggers/getChunksPolling.js');
+const { upsertChunk } = require('./../dist/actions/upsertChunk.js');
+const { getChunks } = require('./../dist/triggers/getChunksPolling.js');
 const { chunk1, cfg1 } = require('./seed/chunk.seed');
 
 describe('Actions - upsertChunk', () => {
   it('should upsert a chunk', async () => {
-    const chunk = await upsertChunk(chunk1.payload, cfg1);
+    const context = {
+      logger: {
+        info: () => {},
+        debug: () => {},
+        error: () => {},
+      },
+    };
+    const chunk = await upsertChunk.bind(context, chunk1.payload, cfg1);
     expect(chunk).to.have.keys('data', 'meta');
     expect(chunk.data.ilaId).to.equal('123asd');
     expect(chunk.data.cid).to.equal('email');
@@ -21,12 +28,18 @@ describe('Actions - upsertChunk', () => {
   });
 
   it('should return 500 if internal server error', async () => {
-    const chunk = await upsertChunk(chunk1.payload, cfg1);
+    const context = {
+      logger: {
+        info: () => {},
+        debug: () => {},
+        error: () => {},
+      },
+    };
+    const chunk = await upsertChunk.bind(context, chunk1.payload, cfg1);
     expect(chunk.error).to.have.keys('errors');
     expect(chunk.error.errors[0].message).to.equal('Server error!');
     expect(chunk.statusCode).to.equal(500);
   });
-
 });
 
 describe('Triggers - getChunksPolling', () => {
