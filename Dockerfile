@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:12-alpine
 LABEL NAME="Integration Layer Adapter"
 LABEL SUMMARY="This image is used to start the Integration Layer Adapter for OIH"
 
