@@ -5,8 +5,8 @@
 /* eslint no-unused-vars: "off" */
 
 const { expect } = require('chai');
-const { upsertChunk } = require('./../dist/actions/upsertChunk.js');
-const { getChunks } = require('./../dist/triggers/getChunksPolling.js');
+const { upsertChunk } = require('../dist/actions/upsertChunk.js');
+const { getChunks } = require('../dist/triggers/getChunksPolling.js');
 const { chunk1, cfg1 } = require('./seed/chunk.seed');
 
 describe('Actions - upsertChunk', () => {
