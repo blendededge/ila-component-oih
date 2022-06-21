@@ -20,9 +20,10 @@ const cfg1 = {
     domainId: 'addresses',
     uri: 'http://metadata.openintegrationhub.com/domains/addresses/schema/uri',
   },
+  token: '12345',
 };
 
-const upsertChunkSuccessful = nock('http://ils.oih-dev-ns.svc.cluster.local:3002/chunks')
+const upsertChunkSuccessful = nock('http://ils.oih-dev-ns.svc.cluster.local:3003/chunks')
   .post('')
   .reply(200, {
     data: {
@@ -44,11 +45,11 @@ const upsertChunkSuccessful = nock('http://ils.oih-dev-ns.svc.cluster.local:3002
     meta: {},
   });
 
-const upsertChunkFailed = nock('http://ils.oih-dev-ns.svc.cluster.local:3002/chunks')
+const upsertChunkFailed = nock('http://ils.oih-dev-ns.svc.cluster.local:3003/chunks')
   .post('')
-  .reply(500, { errors: [{ message: 'Server error!', code: 500 }]});
+  .reply(500, { errors: [{ message: 'Server error!', code: 500 }] });
 
-const getChunksSuccessful = nock('http://ils.oih-dev-ns.svc.cluster.local:3002/chunks/123asd')
+const getChunksSuccessful = nock('http://ils.oih-dev-ns.svc.cluster.local:3003/chunks/123asd')
   .get('')
   .reply(200, {
     data: [{
@@ -71,13 +72,13 @@ const getChunksSuccessful = nock('http://ils.oih-dev-ns.svc.cluster.local:3002/c
     meta: { total: 1 },
   });
 
-const getChunksFailed = nock('http://ils.oih-dev-ns.svc.cluster.local:3002/chunks/123asd')
+const getChunksFailed = nock('http://ils.oih-dev-ns.svc.cluster.local:3003/chunks/123asd')
   .get('')
-  .reply(200, {
+  .reply(404, {
     data: [],
     meta: { },
   });
 
 module.exports = {
-  chunk1, cfg1, upsertChunkSuccessful, getChunksSuccessful, getChunksFailed, upsertChunkFailed
+  chunk1, cfg1, upsertChunkSuccessful, getChunksSuccessful, getChunksFailed, upsertChunkFailed,
 };

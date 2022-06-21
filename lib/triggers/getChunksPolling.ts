@@ -1,6 +1,8 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { newMessage } from '../common/message';
 import { ComponentLogger, Message, PollConfig, TaskExec } from '../common/types';
+import { wrapper } from '@blendededge/ferryman-extensions'
+import { IncomingHeaders, Snapshot, TokenData } from '@blendededge/ferryman-extensions/lib/ferryman-types';
 
 /**
  * This method will be called from OIH providing following data
@@ -9,8 +11,8 @@ import { ComponentLogger, Message, PollConfig, TaskExec } from '../common/types'
  * @param cfg configuration that is account information and configuration field values
  * @param snapshot saves the current state of integration step for the future reference
  */
-async function processTrigger(this: TaskExec, msg: Message, cfg: PollConfig) {
-  const self = this;
+async function processTrigger(this: TaskExec, msg: Message, cfg: PollConfig, snapshot: Snapshot, incomingMessageHeaders: IncomingHeaders, oihToken: TokenData, ) {
+  const self = wrapper(this, msg, cfg);
   self.logger.debug('msg: ', msg);
   self.logger.debug('cfg: ', cfg);
 
