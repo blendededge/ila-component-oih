@@ -48,9 +48,9 @@ describe('Actions - upsertChunk', () => {
 describe('Triggers - getChunksPolling', () => {
   const context = {
     logger: {
-      info: (msg) => { console.info(msg); },
-      debug: (msg) => { console.debug(msg); },
-      error: (msg) => { console.error(msg); },
+      info: () => {},
+      debug: () => {},
+      error: () => {},
     },
   };
   it('should get all valid chunks', async () => {
