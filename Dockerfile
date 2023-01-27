@@ -2,6 +2,8 @@ FROM node:12-alpine
 LABEL NAME="Integration Layer Adapter"
 LABEL SUMMARY="This image is used to start the Integration Layer Adapter for OIH"
 
+ENV ELASTICIO_OTEL_SERVICE_NAME=COMPONENT:ILA
+
 RUN apk --no-cache add \
     python3 \
     make \
