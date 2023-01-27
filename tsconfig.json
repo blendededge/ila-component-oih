@@ -12,7 +12,8 @@
     "types": ["node"]
   },
   "include": [
-    "lib/**/*"
+    "lib/**/*",
+    "lib/common/*"
   ],
   "exclude": [
       "node_modules",
