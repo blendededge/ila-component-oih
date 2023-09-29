@@ -2,16 +2,17 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { Message, UpsertConfig, TaskExec, ComponentLogger, ChunkRequest } from '../common/types';
 import { newMessage } from '../common/message';
 import { wrapper } from '@blendededge/ferryman-extensions'
+import { IncomingHeaders, Snapshot, TokenData } from '@blendededge/ferryman-extensions/lib/ferryman-types';
 /**
  * This method will be called from OIH providing following data
  *
  * @param msg incoming message object that contains `data` with payload
  * @param cfg configuration that is account information and configuration field values
  */
-async function processAction(this: TaskExec, msg: Message, cfg: UpsertConfig) {
-  const self = wrapper(this, msg, cfg);
-  self.logger.debug('msg: ', msg);
-  self.logger.debug('cfg: ', cfg);
+async function processAction(this: TaskExec, msg: Message, cfg: UpsertConfig, snapshot: Snapshot, headers: IncomingHeaders, tokenData: TokenData) {
+  const self = await wrapper(this, msg, cfg, snapshot, headers, tokenData);
+  self.logger.debug('msg: ', JSON.stringify(msg));
+  self.logger.debug('cfg: ', JSON.stringify(cfg));
 
   try {
     const result = await upsertChunk(msg, cfg, self.logger);

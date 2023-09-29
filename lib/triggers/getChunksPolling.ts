@@ -12,9 +12,9 @@ import { IncomingHeaders, Snapshot, TokenData } from '@blendededge/ferryman-exte
  * @param snapshot saves the current state of integration step for the future reference
  */
 async function processTrigger(this: TaskExec, msg: Message, cfg: PollConfig, snapshot: Snapshot, incomingMessageHeaders: IncomingHeaders, oihToken: TokenData, ) {
-  const self = wrapper(this, msg, cfg);
-  self.logger.debug('msg: ', msg);
-  self.logger.debug('cfg: ', cfg);
+  const self = await wrapper(this, msg, cfg, snapshot, incomingMessageHeaders, oihToken);
+  self.logger.debug('msg: ', JSON.stringify(msg));
+  self.logger.debug('cfg: ', JSON.stringify(cfg));
 
   try {
     const result = await getChunks(cfg, {}, self.logger);
