@@ -21,7 +21,7 @@
     "npm": ">=5.4"
   },
   "dependencies": {
-    "@blendededge/ferryman-extensions": "^2.0.4",
+    "@blendededge/ferryman-extensions": "^2.0.5",
     "@openintegrationhub/ferryman": "^2.3.1",
     "axios": "^1.5.1",
     "uuid": "^9.0.1"
